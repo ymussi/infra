@@ -1,0 +1,60 @@
+AWSTemplateFormatVersion: 2010-09-09
+Metadata:
+  'AWS::CloudFormation::Designer':
+    33b8bb45-47ae-4ac9-8d7d-38b9f7ca2702:
+      size:
+        width: 60
+        height: 60
+      position:
+        x: 415
+        'y': 170
+      z: 0
+      embeds: []
+      isassociatedwith:
+        - 6bbfc794-c757-4bf3-b8e6-18affc4ffba3
+    6bbfc794-c757-4bf3-b8e6-18affc4ffba3:
+      size:
+        width: 60
+        height: 60
+      position:
+        x: 270
+        'y': 170
+      z: 0
+      embeds: []
+    12d43263-aa58-4803-8a95-ed4c35d8912d:
+      source:
+        id: 33b8bb45-47ae-4ac9-8d7d-38b9f7ca2702
+      target:
+        id: 6bbfc794-c757-4bf3-b8e6-18affc4ffba3
+      z: 1
+
+Resources:
+  TESTING2:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      AvailabilityZone: us-east-1a
+      ImageId: ami-04d29b6f966df1537
+      InstanceType: t2.micro
+      SecurityGroupIds:
+        - !Ref SGTESTING2
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: 33b8bb45-47ae-4ac9-8d7d-38b9f7ca2702
+
+  SGTESTING2:
+    Type: 'AWS::EC2::SecurityGroup'
+    Properties:
+      GroupDescription: Libera porta 80 e 22 para todos
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: '80'
+          ToPort: '80'
+          CidrIp: 0.0.0.0/0
+        - IpProtocol: tcp
+          FromPort: '22'
+          ToPort: '22'
+          CidrIp: 0.0.0.0/0
+          
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: 6bbfc794-c757-4bf3-b8e6-18affc4ffba3
